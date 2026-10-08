@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maple — Portofolio</title>
+<meta name="description" content="Portofolio Maple, mahasiswa Computer Science BINUS yang mendalami keamanan siber.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1420;
+  --panel:#171E2D;
+  --raise:#1E2738;
+  --line:#2A3447;
+  --text:#E8ECF4;
+  --muted:#96A2B8;
+  --amber:#FFB454;
+  --blue:#8CB4FF;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{background:var(--ink);color:var(--text);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
+
+/* Header */
+header{position:sticky;top:0;z-index:5;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:3.75rem}
+.brand{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:-.01em}
+nav{display:flex;gap:1.5rem}
+nav a{color:var(--muted);text-decoration:none;font-size:.975rem}
+nav a:hover{color:var(--text)}
+
+/* Hero */
+.hero{padding:5rem 0 4.5rem;display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:center}
+.hero h1{font:800 clamp(2.75rem,6.4vw,4.75rem)/1.02 var(--display);letter-spacing:-.03em}
+.hero p{color:var(--muted);max-width:30rem;margin-top:1.5rem;font-size:1.15rem}
+.actions{display:flex;gap:.875rem;margin-top:2rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.25rem;border-radius:.5rem;font-weight:600;text-decoration:none;font-size:1rem}
+.btn.primary{background:var(--amber);color:#1a1205}
+.btn.primary:hover{background:#ffc47a}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--muted)}
+
+/* Terminal — satu-satunya momen animasi di halaman */
+.term{background:var(--panel);border:1px solid var(--line);border-radius:.75rem;font:400 .9rem/1.8 var(--mono);overflow:hidden}
+.term-bar{padding:.6rem 1rem;border-bottom:1px solid var(--line);color:var(--muted);font-size:.8rem}
+.term-body{padding:1.1rem 1.25rem 1.3rem}
+.term .l{display:block;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .p{color:var(--amber)}
+.term .k{color:var(--muted)}
+.term .v{color:var(--text)}
+.term .gap{margin-top:.5rem}
+@media (prefers-reduced-motion:no-preference){
+  .term .l{opacity:0;animation:show .01s forwards}
+  .term .l:nth-child(1){animation-delay:.3s}
+  .term .l:nth-child(2){animation-delay:.9s}
+  .term .l:nth-child(3){animation-delay:1.1s}
+  .term .l:nth-child(4){animation-delay:1.3s}
+  .term .l:nth-child(5){animation-delay:1.5s}
+  .term .l:nth-child(6){animation-delay:2.1s}
+  .term .l:nth-child(7){animation-delay:2.5s}
+  .cursor{animation:blink 1s steps(1) infinite}
+}
+@keyframes show{to{opacity:1}}
+@keyframes blink{50%{opacity:0}}
+.cursor{display:inline-block;width:.55em;height:1.05em;background:var(--amber);vertical-align:-.15em;margin-left:.15rem}
+
+/* Sections */
+section{padding:4rem 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(1.75rem,3.6vw,2.4rem)/1.1 var(--display);letter-spacing:-.02em;margin-bottom:2rem}
+
+/* Tentang */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:3.5rem}
+.about p{max-width:36rem}
+.about p + p{margin-top:1rem}
+.facts{display:grid;gap:0;align-content:start}
+.facts div{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.facts div:first-child{border-top:1px solid var(--line)}
+.facts dt{color:var(--muted)}
+.facts dd{text-align:right;font-weight:600}
+
+/* Proyek */
+.projects{display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;grid-column:span 3;display:flex;flex-direction:column}
+.card.feature{grid-column:span 6;background:var(--raise);padding:2rem;border-radius:1rem}
+.card h3{font:600 1.3rem/1.25 var(--display);letter-spacing:-.01em}
+.card.feature h3{font-size:1.75rem}
+.card .meta{color:var(--muted);font-size:.925rem;margin-top:.25rem}
+.card p{margin-top:.9rem;color:#C5CDDC;max-width:42rem}
+.stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem;list-style:none;padding:0}
+.stack li{font:400 .8rem var(--mono);color:var(--blue);border:1px solid var(--line);border-radius:.375rem;padding:.15rem .55rem}
+.card .more{margin-top:auto;padding-top:1.25rem}
+.card .more a{color:var(--amber);font-weight:600;text-underline-offset:3px}
+
+/* Skill */
+.skills{display:grid;gap:0}
+.skills div{display:grid;grid-template-columns:12rem 1fr;gap:1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.skills div:first-child{border-top:1px solid var(--line)}
+.skills dt{font:600 1.05rem var(--display)}
+.skills dd{color:#C5CDDC}
+
+/* Kontak */
+.contact p{color:var(--muted);max-width:32rem;margin-bottom:1.5rem}
+.links{display:flex;gap:.875rem;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.9rem}
+
+@media (max-width:52rem){
+  .hero,.about{grid-template-columns:1fr;gap:2.5rem}
+  .hero{padding:3rem 0}
+  .card{grid-column:span 6}
+  .skills div{grid-template-columns:1fr;gap:.25rem}
+  nav{gap:1rem}
+}
+@media (max-width:30rem){
+  nav a:nth-child(3){display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Maple</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#skill">Skill</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <h1>Halo, saya Maple.</h1>
+        <p>Mahasiswa Computer Science di BINUS yang suka membongkar cara sistem bekerja, lalu mencari celah sebelum orang lain menemukannya.</p>
+        <div class="actions">
+          <a class="btn primary" href="#proyek">Lihat proyek</a>
+          <a class="btn ghost" href="#kontak">Hubungi saya</a>
+        </div>
+      </div>
+
+      <div class="term" role="img" aria-label="Tampilan terminal berisi ringkasan profil Maple">
+        <div class="term-bar">maple@portfolio</div>
+        <div class="term-body">
+          <span class="l"><span class="p">$</span> <span class="v">whoami</span></span>
+          <span class="l"><span class="v">maple</span></span>
+          <span class="l gap"><span class="k">kampus   </span><span class="v">BINUS University</span></span>
+          <span class="l"><span class="k">jurusan  </span><span class="v">Computer Science</span></span>
+          <span class="l"><span class="k">fokus    </span><span class="v">keamanan siber</span></span>
+          <span class="l gap"><span class="p">$</span> <span class="v">ls proyek/</span></span>
+          <span class="l"><span class="v">bug-bounty-dashboard  smart-contract  mobile-pentest</span> <span class="cursor"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TENTANG -->
+    <section id="tentang">
+      <h2>Tentang saya</h2>
+      <div class="about">
+        <div>
+          <!-- GANTI: tulis bio Anda sendiri -->
+          <p>Saya sedang menempuh Semester 4 di School of Computer Science, BINUS. Lewat tugas kelompok di mata kuliah keamanan, jaringan, dan basis data, saya belajar membangun sistem sekaligus mengujinya.</p>
+          <p>Saya paling nyaman bekerja bertahap: membuat versi awal yang jalan, lalu memperbaikinya sedikit demi sedikit sampai benar-benar rapi.</p>
+        </div>
+        <!-- GANTI: sesuaikan fakta singkat -->
+        <dl class="facts">
+          <div><dt>Kampus</dt><dd>BINUS University</dd></div>
+          <div><dt>Program</dt><dd>Computer Science</dd></div>
+          <div><dt>Semester</dt><dd>4</dd></div>
+          <div><dt>Minat</dt><dd>Keamanan siber</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- PROYEK -->
+    <section id="proyek">
+      <h2>Proyek</h2>
+      <div class="projects">
+
+        <!-- GANTI: deskripsi, teknologi, dan tautan tiap proyek -->
+        <article class="card feature">
+          <h3>Dashboard bug bounty</h3>
+          <div class="meta">Proyek web</div>
+          <p>Website dasbor untuk memantau laporan temuan kerentanan, status penanganannya, dan ringkasan hadiahnya dalam satu tampilan.</p>
+          <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          <div class="more"><a href="#">Lihat proyek</a></div>
+        </article>
+
+        <article class="card">
+          <h3>Proposal smart contract donasi</h3>
+          <div class="meta">Tugas kelompok</div>
+          <p>Rancangan platform donasi dan bantuan sosial yang transparan, dengan analisis kerentanan berdasarkan OWASP Smart Contract Top 10 2025.</p>
+          <ul class="stack"><li>Solidity</li><li>OWASP SC Top 10</li></ul>
+          <div class="more"><a href="#">Baca proposal</a></div>
+        </article>
+
+        <article class="card">
+          <h3>Pengujian keamanan aplikasi mobile</h3>
+          <div class="meta">Mobile Penetration Testing</div>
+          <p>Pengujian celah keamanan pada aplikasi Android, mulai dari analisis statis sampai laporan temuan dan rekomendasi perbaikannya.</p>
+          <ul class="stack"><li>Android</li><li>Pentest</li></ul>
+          <div class="more"><a href="#">Lihat laporan</a></div>
+        </article>
+
+        <article class="card">
+          <h3>Infrastruktur server dan jaringan</h3>
+          <div class="meta">Server and Network Administration</div>
+          <p>Konfigurasi dan pengamanan server beserta jaringannya sebagai proyek kelompok, lengkap dengan dokumentasi langkah kerja.</p>
+          <ul class="stack"><li>Linux</li><li>Networking</li></ul>
+          <div class="more"><a href="#">Lihat dokumentasi</a></div>
+        </article>
+
+        <article class="card">
+          <h3>Perancangan basis data</h3>
+          <div class="meta">Database Technology</div>
+          <p>Perancangan skema, relasi antartabel, dan kueri untuk studi kasus kelompok.</p>
+          <ul class="stack"><li>SQL</li><li>ERD</li></ul>
+          <div class="more"><a href="#">Lihat proyek</a></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILL -->
+    <section id="skill">
+      <h2>Skill</h2>
+      <!-- GANTI: sesuaikan dengan kemampuan Anda -->
+      <dl class="skills">
+        <div><dt>Keamanan</dt><dd>Threat modeling (STRIDE, DREAD), pengujian keamanan mobile, analisis kerentanan smart contract, bug bounty</dd></div>
+        <div><dt>Pengembangan web</dt><dd>HTML, CSS, JavaScript</dd></div>
+        <div><dt>Basis data</dt><dd>SQL, perancangan skema dan ERD</dd></div>
+        <div><dt>Infrastruktur</dt><dd>Administrasi server Linux, dasar jaringan</dd></div>
+      </dl>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="contact">
+      <h2>Kontak</h2>
+      <p>Terbuka untuk diskusi, kolaborasi proyek, atau kesempatan magang.</p>
+      <!-- GANTI: isi dengan email dan akun Anda -->
+      <div class="links">
+        <a class="btn primary" href="mailto:nama@email.com">Kirim email</a>
+        <a class="btn ghost" href="https://github.com/username">GitHub</a>
+        <a class="btn ghost" href="https://linkedin.com/in/username">LinkedIn</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Maple</div>
+</footer>
+
+</body>
+</html>
